@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Jun 03, 2024 at 11:56 AM
--- Server version: 8.0.30
--- PHP Version: 8.1.10
+-- Host: 127.0.0.1
+-- Generation Time: Jun 04, 2024 at 08:05 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,11 +28,11 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `activity_log` (
-  `activity_log_id` int NOT NULL,
+  `activity_log_id` int(11) NOT NULL,
   `username` varchar(100) NOT NULL,
   `date` varchar(100) NOT NULL,
   `action` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `activity_log`
@@ -62,11 +62,11 @@ INSERT INTO `activity_log` (`activity_log_id`, `username`, `date`, `action`) VAL
 --
 
 CREATE TABLE `answer` (
-  `answer_id` int NOT NULL,
-  `quiz_question_id` int NOT NULL,
+  `answer_id` int(11) NOT NULL,
+  `quiz_question_id` int(11) NOT NULL,
   `answer_text` varchar(100) NOT NULL,
   `choices` varchar(3) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `answer`
@@ -134,14 +134,14 @@ INSERT INTO `answer` (`answer_id`, `quiz_question_id`, `answer_text`, `choices`)
 --
 
 CREATE TABLE `assignment` (
-  `assignment_id` int NOT NULL,
+  `assignment_id` int(11) NOT NULL,
   `floc` varchar(300) NOT NULL,
   `fdatein` varchar(100) NOT NULL,
   `fdesc` varchar(100) NOT NULL,
-  `teacher_id` int NOT NULL,
-  `class_id` int NOT NULL,
+  `teacher_id` int(11) NOT NULL,
+  `class_id` int(11) NOT NULL,
   `fname` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `assignment`
@@ -181,9 +181,9 @@ INSERT INTO `assignment` (`assignment_id`, `floc`, `fdatein`, `fdesc`, `teacher_
 --
 
 CREATE TABLE `class` (
-  `class_id` int NOT NULL,
+  `class_id` int(11) NOT NULL,
   `class_name` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `class`
@@ -211,11 +211,11 @@ INSERT INTO `class` (`class_id`, `class_name`) VALUES
 --
 
 CREATE TABLE `class_quiz` (
-  `class_quiz_id` int NOT NULL,
-  `teacher_class_id` int NOT NULL,
-  `quiz_time` int NOT NULL,
-  `quiz_id` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `class_quiz_id` int(11) NOT NULL,
+  `teacher_class_id` int(11) NOT NULL,
+  `quiz_time` int(11) NOT NULL,
+  `quiz_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `class_quiz`
@@ -249,10 +249,10 @@ INSERT INTO `class_quiz` (`class_quiz_id`, `teacher_class_id`, `quiz_time`, `qui
 --
 
 CREATE TABLE `class_subject_overview` (
-  `class_subject_overview_id` int NOT NULL,
-  `teacher_class_id` int NOT NULL,
+  `class_subject_overview_id` int(11) NOT NULL,
+  `teacher_class_id` int(11) NOT NULL,
   `content` varchar(10000) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `class_subject_overview`
@@ -270,10 +270,10 @@ INSERT INTO `class_subject_overview` (`class_subject_overview_id`, `teacher_clas
 --
 
 CREATE TABLE `content` (
-  `content_id` int NOT NULL,
+  `content_id` int(11) NOT NULL,
   `title` varchar(100) NOT NULL,
   `content` mediumtext NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `content`
@@ -301,10 +301,10 @@ INSERT INTO `content` (`content_id`, `title`, `content`) VALUES
 --
 
 CREATE TABLE `department` (
-  `department_id` int NOT NULL,
+  `department_id` int(11) NOT NULL,
   `department_name` varchar(100) NOT NULL,
   `dean` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `department`
@@ -322,12 +322,12 @@ INSERT INTO `department` (`department_id`, `department_name`, `dean`) VALUES
 --
 
 CREATE TABLE `event` (
-  `event_id` int NOT NULL,
+  `event_id` int(11) NOT NULL,
   `event_title` varchar(100) NOT NULL,
-  `teacher_class_id` int NOT NULL,
+  `teacher_class_id` int(11) NOT NULL,
   `date_start` varchar(100) NOT NULL,
   `date_end` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `event`
@@ -346,15 +346,15 @@ INSERT INTO `event` (`event_id`, `event_title`, `teacher_class_id`, `date_start`
 --
 
 CREATE TABLE `files` (
-  `file_id` int NOT NULL,
+  `file_id` int(11) NOT NULL,
   `floc` varchar(500) NOT NULL,
   `fdatein` varchar(200) NOT NULL,
   `fdesc` varchar(100) NOT NULL,
-  `teacher_id` int NOT NULL,
-  `class_id` int NOT NULL,
+  `teacher_id` int(11) NOT NULL,
+  `class_id` int(11) NOT NULL,
   `fname` varchar(100) NOT NULL,
   `uploaded_by` varchar(100) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `files`
@@ -372,15 +372,15 @@ INSERT INTO `files` (`file_id`, `floc`, `fdatein`, `fdesc`, `teacher_id`, `class
 --
 
 CREATE TABLE `message` (
-  `message_id` int NOT NULL,
-  `reciever_id` int NOT NULL,
+  `message_id` int(11) NOT NULL,
+  `reciever_id` int(11) NOT NULL,
   `content` varchar(200) NOT NULL,
   `date_sended` varchar(100) NOT NULL,
-  `sender_id` int NOT NULL,
+  `sender_id` int(11) NOT NULL,
   `reciever_name` varchar(50) NOT NULL,
   `sender_name` varchar(200) NOT NULL,
   `message_status` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `message`
@@ -401,14 +401,14 @@ INSERT INTO `message` (`message_id`, `reciever_id`, `content`, `date_sended`, `s
 --
 
 CREATE TABLE `message_sent` (
-  `message_sent_id` int NOT NULL,
-  `reciever_id` int NOT NULL,
+  `message_sent_id` int(11) NOT NULL,
+  `reciever_id` int(11) NOT NULL,
   `content` varchar(200) NOT NULL,
   `date_sended` varchar(100) NOT NULL,
-  `sender_id` int NOT NULL,
+  `sender_id` int(11) NOT NULL,
   `reciever_name` varchar(100) NOT NULL,
   `sender_name` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `message_sent`
@@ -429,22 +429,30 @@ INSERT INTO `message_sent` (`message_sent_id`, `reciever_id`, `content`, `date_s
 --
 
 CREATE TABLE `messenger` (
-  `id` int NOT NULL,
-  `sender` int NOT NULL DEFAULT '0',
-  `recipient` int DEFAULT '0',
-  `message` text,
-  `date_created` timestamp NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
+  `id` int(11) NOT NULL,
+  `sender` int(11) NOT NULL DEFAULT 0,
+  `recipient` int(11) DEFAULT 0,
+  `message` text DEFAULT NULL,
+  `date_created` timestamp NULL DEFAULT current_timestamp(),
+  `sender_type` varchar(15) DEFAULT NULL,
+  `recipient_type` varchar(15) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `messenger`
 --
 
-INSERT INTO `messenger` (`id`, `sender`, `recipient`, `message`, `date_created`) VALUES
-(1, 233, 25, 'Hi', '2024-06-02 17:34:00'),
-(2, 25, 233, 'Hello', '2024-06-02 17:34:00'),
-(3, 233, 25, 'May sasabihin ako sayo', '2024-06-02 17:35:29'),
-(4, 233, 25, 'Na dapat mong malaman', '2024-06-02 17:35:29');
+INSERT INTO `messenger` (`id`, `sender`, `recipient`, `message`, `date_created`, `sender_type`, `recipient_type`) VALUES
+(1, 233, 25, 'Hi', '2024-06-02 17:34:00', 'student', 'teacher'),
+(2, 25, 233, 'Hello', '2024-06-02 17:34:00', 'teacher', 'student'),
+(3, 233, 25, 'May sasabihin ako sayo', '2024-06-02 17:35:29', 'student', 'teacher'),
+(4, 233, 25, 'Na dapat mong malaman', '2024-06-02 17:35:29', 'student', 'teacher'),
+(6, 0, 0, '', '2024-06-04 17:45:07', '', ''),
+(7, 0, 0, '', '2024-06-04 17:47:33', '', ''),
+(8, 233, 21, 'hi', '2024-06-04 18:01:24', 'student', 'teacher'),
+(9, 233, 21, 'hello', '2024-06-04 18:02:47', 'student', 'teacher'),
+(10, 233, 20, 'huy', '2024-06-04 18:03:32', 'student', 'teacher'),
+(11, 233, 20, 'kumusta?', '2024-06-04 18:04:09', 'student', 'teacher');
 
 -- --------------------------------------------------------
 
@@ -453,12 +461,12 @@ INSERT INTO `messenger` (`id`, `sender`, `recipient`, `message`, `date_created`)
 --
 
 CREATE TABLE `notification` (
-  `notification_id` int NOT NULL,
-  `teacher_class_id` int NOT NULL,
+  `notification_id` int(11) NOT NULL,
+  `teacher_class_id` int(11) NOT NULL,
   `notification` varchar(100) NOT NULL,
   `date_of_notification` varchar(50) NOT NULL,
   `link` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `notification`
@@ -517,11 +525,11 @@ INSERT INTO `notification` (`notification_id`, `teacher_class_id`, `notification
 --
 
 CREATE TABLE `notification_read` (
-  `notification_read_id` int NOT NULL,
-  `student_id` int NOT NULL,
+  `notification_read_id` int(11) NOT NULL,
+  `student_id` int(11) NOT NULL,
   `student_read` varchar(50) NOT NULL,
-  `notification_id` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `notification_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `notification_read`
@@ -556,11 +564,11 @@ INSERT INTO `notification_read` (`notification_read_id`, `student_id`, `student_
 --
 
 CREATE TABLE `notification_read_teacher` (
-  `notification_read_teacher_id` int NOT NULL,
-  `teacher_id` int NOT NULL,
+  `notification_read_teacher_id` int(11) NOT NULL,
+  `teacher_id` int(11) NOT NULL,
   `student_read` varchar(100) NOT NULL,
-  `notification_id` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `notification_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `notification_read_teacher`
@@ -588,11 +596,11 @@ INSERT INTO `notification_read_teacher` (`notification_read_teacher_id`, `teache
 --
 
 CREATE TABLE `purchased_items` (
-  `purchased_item_id` int NOT NULL,
-  `student_id` int DEFAULT NULL,
+  `purchased_item_id` int(11) NOT NULL,
+  `student_id` int(11) DEFAULT NULL,
   `item_image_url` varchar(255) DEFAULT NULL,
-  `purchase_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
+  `purchase_date` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `purchased_items`
@@ -641,9 +649,9 @@ INSERT INTO `purchased_items` (`purchased_item_id`, `student_id`, `item_image_ur
 --
 
 CREATE TABLE `question_type` (
-  `question_type_id` int NOT NULL,
+  `question_type_id` int(11) NOT NULL,
   `question_type` varchar(150) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `question_type`
@@ -661,14 +669,14 @@ INSERT INTO `question_type` (`question_type_id`, `question_type`) VALUES
 --
 
 CREATE TABLE `quiz` (
-  `quiz_id` int NOT NULL,
+  `quiz_id` int(11) NOT NULL,
   `quiz_title` varchar(50) NOT NULL,
   `quiz_description` varchar(100) NOT NULL,
   `date_added` varchar(100) NOT NULL,
-  `teacher_id` int NOT NULL,
-  `quizGold` int NOT NULL DEFAULT '100',
-  `quizExp` int NOT NULL DEFAULT '100'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `teacher_id` int(11) NOT NULL,
+  `quizGold` int(11) NOT NULL DEFAULT 100,
+  `quizExp` int(11) NOT NULL DEFAULT 100
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `quiz`
@@ -697,14 +705,14 @@ INSERT INTO `quiz` (`quiz_id`, `quiz_title`, `quiz_description`, `date_added`, `
 --
 
 CREATE TABLE `quiz_question` (
-  `quiz_question_id` int NOT NULL,
-  `quiz_id` int NOT NULL,
+  `quiz_question_id` int(11) NOT NULL,
+  `quiz_id` int(11) NOT NULL,
   `question_text` varchar(100) NOT NULL,
-  `question_type_id` int NOT NULL,
-  `points` int NOT NULL,
+  `question_type_id` int(11) NOT NULL,
+  `points` int(11) NOT NULL,
   `date_added` varchar(100) NOT NULL,
   `answer` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `quiz_question`
@@ -738,9 +746,9 @@ INSERT INTO `quiz_question` (`quiz_question_id`, `quiz_id`, `question_text`, `qu
 --
 
 CREATE TABLE `school_year` (
-  `school_year_id` int NOT NULL,
+  `school_year_id` int(11) NOT NULL,
   `school_year` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `school_year`
@@ -757,22 +765,22 @@ INSERT INTO `school_year` (`school_year_id`, `school_year`) VALUES
 --
 
 CREATE TABLE `student` (
-  `student_id` int NOT NULL,
+  `student_id` int(11) NOT NULL,
   `firstname` varchar(100) NOT NULL,
   `lastname` varchar(100) NOT NULL,
-  `class_id` int NOT NULL DEFAULT '1',
+  `class_id` int(11) NOT NULL DEFAULT 1,
   `username` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
   `location` varchar(100) NOT NULL,
   `status` varchar(100) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `level` int NOT NULL DEFAULT '1',
-  `gold` int NOT NULL,
+  `level` int(11) NOT NULL DEFAULT 1,
+  `gold` int(11) NOT NULL,
   `hat` varchar(100) NOT NULL DEFAULT 'admin/uploads/hat0.png',
   `shirt` varchar(100) NOT NULL DEFAULT 'admin/uploads/shirt0.png',
   `pants` varchar(100) NOT NULL DEFAULT 'admin/uploads/pants0.png',
   `hand` varchar(100) NOT NULL DEFAULT 'admin/uploads/hand0.png'
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `student`
@@ -790,15 +798,15 @@ INSERT INTO `student` (`student_id`, `firstname`, `lastname`, `class_id`, `usern
 --
 
 CREATE TABLE `student_assignment` (
-  `student_assignment_id` int NOT NULL,
-  `assignment_id` int NOT NULL,
+  `student_assignment_id` int(11) NOT NULL,
+  `assignment_id` int(11) NOT NULL,
   `floc` varchar(100) NOT NULL,
   `assignment_fdatein` varchar(50) NOT NULL,
   `fdesc` varchar(100) NOT NULL,
   `fname` varchar(50) NOT NULL,
-  `student_id` int NOT NULL,
+  `student_id` int(11) NOT NULL,
   `grade` varchar(5) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `student_assignment`
@@ -817,13 +825,13 @@ INSERT INTO `student_assignment` (`student_assignment_id`, `assignment_id`, `flo
 --
 
 CREATE TABLE `student_backpack` (
-  `file_id` int NOT NULL,
+  `file_id` int(11) NOT NULL,
   `floc` varchar(100) NOT NULL,
   `fdatein` varchar(100) NOT NULL,
   `fdesc` varchar(100) NOT NULL,
-  `student_id` int NOT NULL,
+  `student_id` int(11) NOT NULL,
   `fname` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `student_backpack`
@@ -843,12 +851,12 @@ INSERT INTO `student_backpack` (`file_id`, `floc`, `fdatein`, `fdesc`, `student_
 --
 
 CREATE TABLE `student_class_quiz` (
-  `student_class_quiz_id` int NOT NULL,
-  `class_quiz_id` int NOT NULL,
-  `student_id` int NOT NULL,
+  `student_class_quiz_id` int(11) NOT NULL,
+  `class_quiz_id` int(11) NOT NULL,
+  `student_id` int(11) NOT NULL,
   `student_quiz_time` varchar(100) NOT NULL,
   `grade` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `student_class_quiz`
@@ -883,15 +891,15 @@ INSERT INTO `student_class_quiz` (`student_class_quiz_id`, `class_quiz_id`, `stu
 --
 
 CREATE TABLE `subject` (
-  `subject_id` int NOT NULL,
+  `subject_id` int(11) NOT NULL,
   `subject_code` varchar(100) NOT NULL,
   `subject_title` varchar(100) NOT NULL,
   `category` varchar(100) NOT NULL,
   `description` longtext NOT NULL,
-  `unit` int NOT NULL,
+  `unit` int(11) NOT NULL,
   `Pre_req` varchar(100) NOT NULL,
   `semester` varchar(100) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `subject`
@@ -931,18 +939,18 @@ INSERT INTO `subject` (`subject_id`, `subject_code`, `subject_title`, `category`
 --
 
 CREATE TABLE `teacher` (
-  `teacher_id` int NOT NULL,
-  `username` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
-  `password` varchar(200) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+  `teacher_id` int(11) NOT NULL,
+  `username` varchar(100) DEFAULT NULL,
+  `password` varchar(200) DEFAULT NULL,
   `firstname` varchar(100) NOT NULL,
   `lastname` varchar(100) NOT NULL,
-  `department_id` int NOT NULL,
+  `department_id` int(11) NOT NULL,
   `location` varchar(200) NOT NULL,
-  `about` varchar(500) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
-  `teacher_status` varchar(20) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
-  `teacher_stat` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
+  `about` varchar(500) DEFAULT NULL,
+  `teacher_status` varchar(20) DEFAULT NULL,
+  `teacher_stat` varchar(100) DEFAULT NULL,
   `email` text NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `teacher`
@@ -960,13 +968,13 @@ INSERT INTO `teacher` (`teacher_id`, `username`, `password`, `firstname`, `lastn
 --
 
 CREATE TABLE `teacher_backpack` (
-  `file_id` int NOT NULL,
+  `file_id` int(11) NOT NULL,
   `floc` varchar(100) NOT NULL,
   `fdatein` varchar(100) NOT NULL,
   `fdesc` varchar(100) NOT NULL,
-  `teacher_id` int NOT NULL,
+  `teacher_id` int(11) NOT NULL,
   `fname` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -975,13 +983,13 @@ CREATE TABLE `teacher_backpack` (
 --
 
 CREATE TABLE `teacher_class` (
-  `teacher_class_id` int NOT NULL,
-  `teacher_id` int NOT NULL,
-  `class_id` int NOT NULL,
-  `subject_id` int NOT NULL,
+  `teacher_class_id` int(11) NOT NULL,
+  `teacher_id` int(11) NOT NULL,
+  `class_id` int(11) NOT NULL,
+  `subject_id` int(11) NOT NULL,
   `thumbnails` varchar(100) NOT NULL,
   `school_year` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `teacher_class`
@@ -1029,12 +1037,12 @@ INSERT INTO `teacher_class` (`teacher_class_id`, `teacher_id`, `class_id`, `subj
 --
 
 CREATE TABLE `teacher_class_announcements` (
-  `teacher_class_announcements_id` int NOT NULL,
+  `teacher_class_announcements_id` int(11) NOT NULL,
   `content` varchar(500) NOT NULL,
   `teacher_id` varchar(100) NOT NULL,
-  `teacher_class_id` int NOT NULL,
+  `teacher_class_id` int(11) NOT NULL,
   `date` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `teacher_class_announcements`
@@ -1059,11 +1067,11 @@ INSERT INTO `teacher_class_announcements` (`teacher_class_announcements_id`, `co
 --
 
 CREATE TABLE `teacher_class_student` (
-  `teacher_class_student_id` int NOT NULL,
-  `teacher_class_id` int NOT NULL,
-  `student_id` int NOT NULL,
-  `teacher_id` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `teacher_class_student_id` int(11) NOT NULL,
+  `teacher_class_id` int(11) NOT NULL,
+  `student_id` int(11) NOT NULL,
+  `teacher_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `teacher_class_student`
@@ -1384,14 +1392,14 @@ INSERT INTO `teacher_class_student` (`teacher_class_student_id`, `teacher_class_
 --
 
 CREATE TABLE `teacher_notification` (
-  `teacher_notification_id` int NOT NULL,
-  `teacher_class_id` int NOT NULL,
+  `teacher_notification_id` int(11) NOT NULL,
+  `teacher_class_id` int(11) NOT NULL,
   `notification` varchar(100) NOT NULL,
   `date_of_notification` varchar(100) NOT NULL,
   `link` varchar(100) NOT NULL,
-  `student_id` int NOT NULL,
-  `assignment_id` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `student_id` int(11) NOT NULL,
+  `assignment_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `teacher_notification`
@@ -1415,14 +1423,14 @@ INSERT INTO `teacher_notification` (`teacher_notification_id`, `teacher_class_id
 --
 
 CREATE TABLE `teacher_shared` (
-  `teacher_shared_id` int NOT NULL,
-  `teacher_id` int NOT NULL,
-  `shared_teacher_id` int NOT NULL,
+  `teacher_shared_id` int(11) NOT NULL,
+  `teacher_id` int(11) NOT NULL,
+  `shared_teacher_id` int(11) NOT NULL,
   `floc` varchar(100) NOT NULL,
   `fdatein` varchar(100) NOT NULL,
   `fdesc` varchar(100) NOT NULL,
   `fname` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `teacher_shared`
@@ -1438,13 +1446,13 @@ INSERT INTO `teacher_shared` (`teacher_shared_id`, `teacher_id`, `shared_teacher
 --
 
 CREATE TABLE `users` (
-  `user_id` int NOT NULL,
+  `user_id` int(11) NOT NULL,
   `username` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
   `firstname` varchar(100) NOT NULL,
   `lastname` varchar(100) NOT NULL,
   `status` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `users`
@@ -1461,12 +1469,12 @@ INSERT INTO `users` (`user_id`, `username`, `password`, `firstname`, `lastname`,
 --
 
 CREATE TABLE `user_log` (
-  `user_log_id` int NOT NULL,
+  `user_log_id` int(11) NOT NULL,
   `username` varchar(25) NOT NULL,
   `login_date` varchar(30) NOT NULL,
   `logout_date` varchar(30) NOT NULL,
-  `user_id` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `user_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `user_log`
@@ -1742,205 +1750,205 @@ ALTER TABLE `user_log`
 -- AUTO_INCREMENT for table `activity_log`
 --
 ALTER TABLE `activity_log`
-  MODIFY `activity_log_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `activity_log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `answer`
 --
 ALTER TABLE `answer`
-  MODIFY `answer_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=138;
+  MODIFY `answer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=138;
 
 --
 -- AUTO_INCREMENT for table `assignment`
 --
 ALTER TABLE `assignment`
-  MODIFY `assignment_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `assignment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `class`
 --
 ALTER TABLE `class`
-  MODIFY `class_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `class_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `class_quiz`
 --
 ALTER TABLE `class_quiz`
-  MODIFY `class_quiz_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `class_quiz_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `class_subject_overview`
 --
 ALTER TABLE `class_subject_overview`
-  MODIFY `class_subject_overview_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `class_subject_overview_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `content`
 --
 ALTER TABLE `content`
-  MODIFY `content_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `content_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `department`
 --
 ALTER TABLE `department`
-  MODIFY `department_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `department_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `event`
 --
 ALTER TABLE `event`
-  MODIFY `event_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `event_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `files`
 --
 ALTER TABLE `files`
-  MODIFY `file_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=145;
+  MODIFY `file_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=145;
 
 --
 -- AUTO_INCREMENT for table `message`
 --
 ALTER TABLE `message`
-  MODIFY `message_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `message_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `message_sent`
 --
 ALTER TABLE `message_sent`
-  MODIFY `message_sent_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `message_sent_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `messenger`
 --
 ALTER TABLE `messenger`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `notification`
 --
 ALTER TABLE `notification`
-  MODIFY `notification_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `notification_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `notification_read`
 --
 ALTER TABLE `notification_read`
-  MODIFY `notification_read_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `notification_read_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `notification_read_teacher`
 --
 ALTER TABLE `notification_read_teacher`
-  MODIFY `notification_read_teacher_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `notification_read_teacher_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `purchased_items`
 --
 ALTER TABLE `purchased_items`
-  MODIFY `purchased_item_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `purchased_item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `quiz`
 --
 ALTER TABLE `quiz`
-  MODIFY `quiz_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `quiz_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `quiz_question`
 --
 ALTER TABLE `quiz_question`
-  MODIFY `quiz_question_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+  MODIFY `quiz_question_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
 -- AUTO_INCREMENT for table `school_year`
 --
 ALTER TABLE `school_year`
-  MODIFY `school_year_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `school_year_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `student_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=251;
+  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=251;
 
 --
 -- AUTO_INCREMENT for table `student_assignment`
 --
 ALTER TABLE `student_assignment`
-  MODIFY `student_assignment_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `student_assignment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `student_backpack`
 --
 ALTER TABLE `student_backpack`
-  MODIFY `file_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `file_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `student_class_quiz`
 --
 ALTER TABLE `student_class_quiz`
-  MODIFY `student_class_quiz_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `student_class_quiz_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `subject`
 --
 ALTER TABLE `subject`
-  MODIFY `subject_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `subject_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `teacher`
 --
 ALTER TABLE `teacher`
-  MODIFY `teacher_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `teacher_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `teacher_backpack`
 --
 ALTER TABLE `teacher_backpack`
-  MODIFY `file_id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `file_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `teacher_class`
 --
 ALTER TABLE `teacher_class`
-  MODIFY `teacher_class_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=194;
+  MODIFY `teacher_class_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=194;
 
 --
 -- AUTO_INCREMENT for table `teacher_class_announcements`
 --
 ALTER TABLE `teacher_class_announcements`
-  MODIFY `teacher_class_announcements_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `teacher_class_announcements_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `teacher_class_student`
 --
 ALTER TABLE `teacher_class_student`
-  MODIFY `teacher_class_student_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=406;
+  MODIFY `teacher_class_student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=406;
 
 --
 -- AUTO_INCREMENT for table `teacher_notification`
 --
 ALTER TABLE `teacher_notification`
-  MODIFY `teacher_notification_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `teacher_notification_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `teacher_shared`
 --
 ALTER TABLE `teacher_shared`
-  MODIFY `teacher_shared_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `teacher_shared_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `user_log`
 --
 ALTER TABLE `user_log`
-  MODIFY `user_log_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=138;
+  MODIFY `user_log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=138;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

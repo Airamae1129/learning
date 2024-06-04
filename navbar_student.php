@@ -9,7 +9,7 @@
     <ul class="nav pull-right">
         <?php 
         // Use prepared statements to prevent SQL injection
-        $stmt = $conn->prepare("SELECT firstname, lastname FROM student WHERE student_id = ?");
+        $stmt = $conn->prepare("SELECT firstname, lastname, location FROM student WHERE student_id = ?");
         $stmt->bind_param("s", $session_id);
         $stmt->execute();
         $result = $stmt->get_result();

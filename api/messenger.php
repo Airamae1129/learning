@@ -7,23 +7,32 @@ session_start();
 $messenger = new Messenger();
 
 if (isset($_SESSION['id'])) {
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    if (in_array($_SERVER['REQUEST_METHOD'], ['GET', 'POST'])) {
+        switch ($_SERVER['REQUEST_METHOD']) {
+            case 'GET': {
+                $sender         = $_GET['sender'];
+                $recipient      = $_GET['recipient'];
+                $sender_type    = $_GET['sender_type'];
+                $recipient_type = $_GET['recipient_type'];
 
-        $data = file_get_contents('php://input');
-        $data = json_decode($data);
+                echo $messenger->GetMessage($sender, $recipient, $sender_type, $recipient_type);
+                break;
+            } case 'POST': {
+                $recipient      = $_POST['recipient'];
+				$recipient_type = $_POST['recipient_type'];
+				$message        = $_POST['message'];
+                $sender         = $_POST['sender'];
+				$sender_type    = $_POST['sender_type'];
 
-        $type = $data->type;
-
-        switch ($type) {
-            case 'get-message': {
-                $sender = $data->sender;
-                $recipient = $data->recipient;
-
-                echo $messenger->GetMessage($sender, $recipient);
+                echo $messenger->SendMessage($sender, $recipient, $sender_type, $recipient_type, $message);
                 break;
             }
         }
+
+        
     }
+
+
 } else {
     http_response_code(401);
     header('Content-Type: application/json');
