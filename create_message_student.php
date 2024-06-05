@@ -11,9 +11,9 @@
 								
 								    <ul class="nav nav-tabs">
 										<li class="active">
-											<a href="student_message.php">For Teacher</a>
+											<a href="messenger.php">For Teacher</a>
 										</li>
-										<li><a href="student_message_student.php">For Student</a></li>
+										<li><a href="messenger.php">For Student</a></li>
 									</ul>
 								
 								

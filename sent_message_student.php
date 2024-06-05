@@ -28,7 +28,7 @@
                             <div class="block-content collapse in">
                                 <div class="span12">
 										<ul class="nav nav-pills">
-										<li class=""><a href="student_message.php"><i class="icon-envelope-alt"></i>inbox</a></li>
+										<li class=""><a href="messenger.php"><i class="icon-envelope-alt"></i>inbox</a></li>
 										<li class="active"><a href="sent_message_student.php"><i class="icon-envelope-alt"></i>Send messages</a></li>
 										</ul>
 									

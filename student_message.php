@@ -41,7 +41,7 @@
 										</div>
 										
 										<ul class="nav nav-pills">
-										<li class="active"><a href="student_message.php"><i class="icon-envelope-alt"></i>inbox</a></li>
+										<li class="active"><a href="messenger.php"><i class="icon-envelope-alt"></i>inbox</a></li>
 										<li class=""><a href="sent_message_student.php"><i class="icon-envelope-alt"></i>Send messages</a></li>
 										</ul>
 									

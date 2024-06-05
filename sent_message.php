@@ -30,7 +30,7 @@
   								
 										<ul class="nav nav-pills">
 										<li class="">
-										<a href="teacher_message.php"><i class="icon-envelope-alt"></i>inbox</a>
+										<a href="messenger.php"><i class="icon-envelope-alt"></i>inbox</a>
 										</li>
 										<li class="active">
 										<a href="sent_message.php"><i class="icon-envelope-alt"></i>Sent messages</a>

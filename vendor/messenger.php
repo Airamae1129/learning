@@ -126,9 +126,9 @@
 				                <div class="span12">
 								    <ul class="nav nav-tabs">
 										<li class="active">
-											<a href="student_message.php">Teachers</a>
+											<a href="messenger.php">Teachers</a>
 										</li>
-										<li><a href="student_message_student.php">Students</a></li>
+										<li><a href="messenger.php">Students</a></li>
 									</ul>
 									<div id="techears-container">
 										<style>

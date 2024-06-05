@@ -4,12 +4,17 @@
 <?php require_once 'DataLayer/Messenger.php'; ?>
 <?php $messenger = new Messenger(); ?>
 <?php $userId = isset($_SESSION['id']) ? $_SESSION['id'] : 0; ?>
+<?php $type = isset($_SESSION['user_type']) ? $_SESSION['user_type']: ''; ?>
+<?php $sidebar = $type == 'teacher' 
+			   ? 'teacher_message_sidebar.php' 
+			   : 'student_message_sidebar.php'; 
+?>
 
 <body>
 	<?php include('navbar_student.php'); ?>
         <div class="container-fluid">
             <div class="row-fluid">
-			    <?php include('student_message_sidebar.php'); ?>
+			    <?php require_once $sidebar; ?>
 				<!-- START MESSAGESS -->
                 <div class="span6" id="content">
                      <div class="row-fluid">
@@ -116,6 +121,8 @@
 		<?php include('script.php'); ?>
         <script>
             $(function () {
+				setInterval(getLatestMessage, 10000);
+
 				$('#sent-container').css('display', 'none');
 				$('#students-container').css('display', 'none');
 
@@ -191,26 +198,33 @@
 								if (item.sender == sender) {
 									$('#inbox-container').append(
 										`<div style="display:flex; justify-content: end;">
-											<div class="alert alert-success" style="margin-bottom: 1rem; max-width:70%; display:inline-block">
+											<div class="alert alert-success" style="margin-bottom: 0; max-width:70%; display:inline-block">
 												<p><small>${item.date_created}</small></p>
 												<p>${item.message}</p>
 											</div>
-										</div>`
+										</div><br />`
 									)
 								} else {
 									$('#inbox-container').append(
-										`<div class="alert alert-light" style="margin-bottom: 1rem; max-width:70%; display:inline-block">
-											<p><small>${item.date_created}</small></p>
-											<p>${item.message}</p>
-										</div>`
+										`<div style="display:flex; justify-content: start;">
+											<div class="alert alert-light" style="margin-bottom: 0; max-width:70%; display:inline-block">
+												<p><small>${item.date_created}</small></p>
+												<p>${item.message}</p>
+											</div>
+										</div><br />`
 									)
 								}
+
+								
 							});
 						} else {
 							$('#inbox-container').append(
 								`<h5 style="text-align:center">No Message</h5>`
 							)
 						}
+
+						var scrollableDiv = document.getElementById('inbox-container');
+						scrollableDiv.scrollTop = scrollableDiv.scrollHeight;
 					}
 					
 				});
@@ -248,18 +262,83 @@
 						response = JSON.stringify(response);
 						response = JSON.parse(response);
 						response = JSON.parse(response);
-						
+
 						$('#inbox-container').append(
 							`<div style="display:flex; justify-content: end;">
-								<div class="alert alert-success" style="margin-bottom: 1rem; max-width:70%; display:inline-block">
+								<div class="alert alert-success" style="margin-bottom: 0; max-width:70%; display:inline-block">
 									<p><small>${response.date_created}</small></p>
 									<p>${response.message}</p>
 								</div>
-							</div>`
+							</div><br />`
 						)
+
+						var scrollableDiv = document.getElementById('inbox-container');
+						scrollableDiv.scrollTop = scrollableDiv.scrollHeight;
 					}
 				})
 			})
+
+			function getLatestMessage() {
+				var recipient = $('#recipient').val();
+				var recipient_type = $('#recipient_type').val();
+				var sender = '<?php echo isset($session_id) ? $session_id : 0; ?>';
+				var sender_type = '<?php echo isset($_SESSION['user_type']) ? $_SESSION['user_type'] : ''; ?>'
+
+				if (recipient != '') {
+					var queryString = `?sender=${sender}&sender_type=${sender_type}&recipient=${recipient}&recipient_type=${recipient_type}`;
+
+					$('#inbox-container').children().remove();
+
+					$.ajax({
+						type: "GET",
+						url: 'api/messenger.php' + queryString,
+						contentType: 'application/json',
+						success: function (response) {
+							document.getElementById('contact-name').innerHTML = name;
+							response = JSON.stringify(response);
+							response = JSON.parse(response);
+
+							var result = JSON.parse(response);
+							if (result.length) {
+								
+								result.forEach(function (item) {
+									console.log(item.message);
+									var sender = '<?php echo isset($session_id) ? $session_id : 0; ?>';
+									if (item.sender == sender) {
+										$('#inbox-container').append(
+											`<div style="display:flex; justify-content: end;">
+												<div class="alert alert-success" style="margin-bottom: 0; max-width:70%; display:inline-block">
+													<p><small>${item.date_created}</small></p>
+													<p>${item.message}</p>
+												</div>
+											</div><br />`
+										)
+									} else {
+										$('#inbox-container').append(
+											`<div style="display:flex; justify-content: start;">
+												<div class="alert alert-light" style="margin-bottom: 0; max-width:70%; display:inline-block">
+													<p><small>${item.date_created}</small></p>
+													<p>${item.message}</p>
+												</div>
+											</div><br />`
+										)
+									}
+
+									
+								});
+							} else {
+								$('#inbox-container').append(
+									`<h5 style="text-align:center">No Message</h5>`
+								)
+							}
+
+							var scrollableDiv = document.getElementById('inbox-container');
+							scrollableDiv.scrollTop = scrollableDiv.scrollHeight;
+						}
+						
+					});
+				}
+			}
         </script>
     </body>
 </html>
