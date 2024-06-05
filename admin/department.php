@@ -26,6 +26,7 @@
 												<th></th>
 												<th>Department</th>
 												<th>Person In-charge</th>
+												<th>Action</th>
 											
 												<th></th>
 										   </tr>
@@ -45,7 +46,23 @@
 														<td><?php echo $row['dean']; ?></td>
 												
 														<td width="30"><a href="edit_department.php<?php echo '?id='.$id; ?>" class="btn btn-success"><i class="icon-pencil icon-large"></i></a></td>
-
+														<td width="40">
+														<a href="#delete_user_modal_<?php echo htmlspecialchars($id); ?>" data-toggle="modal" class="btn btn-danger"><i class="icon-trash icon-large"></i></a>
+														<!-- Individual delete user modal -->
+														<div id="delete_user_modal_<?php echo htmlspecialchars($id); ?>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel_<?php echo htmlspecialchars($id); ?>" aria-hidden="true">
+															<div class="modal-header">
+																<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+																<h3 id="myModalLabel_<?php echo htmlspecialchars($id); ?>">Delete Deparment</h3>
+															</div>
+															<div class="modal-body">
+																<p>Are you sure you want to delete this Department <?php echo htmlspecialchars($row['department_name']); ?>?</p>
+															</div>
+															<div class="modal-footer">
+																<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+																<a href="delete_department.php?id=<?php echo htmlspecialchars($id); ?>" class="btn btn-danger">Delete</a>
+															</div>
+														</div>
+													</td>
                                
 													</tr>
 												<?php } ?>

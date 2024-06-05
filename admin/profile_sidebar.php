@@ -1,4 +1,4 @@
-     <div class="span3" id="sidebar">
+<div class="span3" id="sidebar">
                     <ul class="nav nav-list bs-docs-sidenav nav-collapse collapse">
                         <li> <a href="dashboard.php"><i class="icon-chevron-right"></i><i class="icon-home"></i>&nbsp;Dashboard</a> </li>
 						<li>
@@ -7,10 +7,10 @@
 						<li>
                             <a href="class.php"><i class="icon-chevron-right"></i><i class="icon-group"></i> Course and Year</a>
                         </li>
-						<li>
+						<li  class="">
                             <a href="admin_user.php"><i class="icon-chevron-right"></i><i class="icon-user"></i> Admin Users</a>
                         </li>
-						<li  class="active">
+						<li>
                             <a href="department.php"><i class="icon-chevron-right"></i><i class="icon-building"></i> Department</a>
                         </li>
 						<li>
@@ -19,7 +19,7 @@
 						<li>
                             <a href="teachers.php"><i class="icon-chevron-right"></i><i class="icon-group"></i> Teachers</a>
                         </li>
-						<li>
+							<li>
                             <a href="downloadable.php"><i class="icon-chevron-right"></i><i class="icon-download"></i> Downloadable Materials</a>
                         </li>
 						<li>
@@ -34,7 +34,7 @@
 						<li>
                             <a href="activity_log.php"><i class="icon-chevron-right"></i><i class="icon-file"></i> Activity Log</a>
                         </li>
-						<li>
+						<li class="active">
                             <a href="school_year.php"><i class="icon-chevron-right"></i><i class="icon-calendar"></i> School Year</a>
                         </li>
 						<li class="">

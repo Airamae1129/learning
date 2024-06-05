@@ -14,7 +14,7 @@
                         <!-- block -->
                         <div id="block_bg" class="block">
                             <div class="navbar navbar-inner block-header">
-                                <div class="muted pull-left">Admin Users List</div>
+                                <div class="muted pull-left"><strong>Admin List</strong></div>
                             </div>
                             <div class="block-content collapse in">
                                 <div class="span12">

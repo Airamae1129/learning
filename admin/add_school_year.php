@@ -16,7 +16,7 @@
 										
 											<div class="control-group">
                                           <div class="controls">
-												<button name="save" class="btn btn-info"><i class="icon-plus-sign icon-large"></i></button>
+												<button name="save" class="btn btn-info">Add School Year  <i class="icon-plus-sign icon-large"></i></button>
 
                                           </div>
                                         </div>

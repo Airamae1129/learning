@@ -4,16 +4,10 @@ session_start();
 
 $username = $_POST['username'];
 $password = $_POST['password'];
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
-// Sanitize user input
-// $username = mysqli_real_escape_string($conn, $username);
-// $password = mysqli_real_escape_string($conn, $password);
 
-// // Debug: Log sanitized inputs
-// error_log("Sanitized username: $username");
-// error_log("Sanitized password: $password");
-
-// Fetch the user from the database using prepared statements
 $query = mysqli_query($conn, "SELECT * FROM users WHERE username = '$username' AND password = '$password'") or die(mysqli_error($conn));
 $count = mysqli_num_rows($query);
 $row = mysqli_fetch_array($query);

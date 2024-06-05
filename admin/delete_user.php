@@ -16,5 +16,7 @@ if(isset($_GET['id'])) {
     } else {
         echo "Error deleting user: " . mysqli_error($conn);
     }
+} else {
+    echo "User ID not provided.";
 }
 ?>
