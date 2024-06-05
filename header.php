@@ -6,6 +6,7 @@
 		<meta name="keywords" content="CHMSC LMS,CHMSCLMS,CHMSC,LMS,CHMSCLMS.COMXA">
 		<meta name="author" content="JOHN KEVIN LORAYNA">
 		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- Bootstrap -->
 				<link href="admin/images/favicon.ico" rel="icon" type="image">
 				<link href="admin/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen"/>
@@ -14,6 +15,7 @@
 				<link href="admin/bootstrap/css/my_style.css" rel="stylesheet" media="screen"/>
 				<link href="admin/vendors/easypiechart/jquery.easy-pie-chart.css" rel="stylesheet" media="screen"/>
 				<link href="admin/assets/styles.css" rel="stylesheet" media="screen"/>
+
 				<!-- calendar css -->
 				<link href="admin/vendors/fullcalendar/fullcalendar.css" rel="stylesheet" media="screen">
 				<!-- index css -->

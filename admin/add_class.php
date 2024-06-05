@@ -2,21 +2,21 @@
                         <!-- block -->
                         <div class="block">
                             <div class="navbar navbar-inner block-header">
-                                <div class="muted pull-left">Add Class</div>
+                                <div class="muted pull-left"><strong>Add Course and Section</strong></div>
                             </div>
                             <div class="block-content collapse in">
                                 <div class="span12">
 								<form method="post">
 										<div class="control-group">
                                           <div class="controls">
-                                            <input name="class_name" class="input focused" id="focusedInput" type="text" placeholder = "Class Name" required>
+                                            <input name="class_name" class="input focused" id="focusedInput" type="text" placeholder = "Course and Section" required>
                                           </div>
                                         </div>
 										
 									
 											<div class="control-group">
                                           <div class="controls">
-												<button name="save" class="btn btn-info"><i class="icon-plus-sign icon-large"></i></button>
+												<button name="save" class="btn btn-info">Add Item  <i class="icon-plus-sign icon-large"></i></button>
 
                                           </div>
                                         </div>

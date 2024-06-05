@@ -10,7 +10,7 @@
 														});
 														</script>		
 			</form>
-						<script>
+						<script>git
 						jQuery(document).ready(function(){
 						jQuery("#login_form1").submit(function(e){
 								e.preventDefault();

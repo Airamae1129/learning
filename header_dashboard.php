@@ -6,6 +6,7 @@
 		<meta name="keywords" content="CHMSC LMS,CHMSCLMS,CHMSC,LMS,CHMSCLMS.COMXA">
 		<meta name="author" content="JOHN KEVIN LORAYNA">
 		<meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- Bootstrap -->
 		<link href="admin/images/favicon.ico" rel="icon" type="image">
         <link href="admin/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">

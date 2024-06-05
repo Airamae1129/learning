@@ -27,7 +27,7 @@
 										
 											<div class="control-group">
                                           <div class="controls">
-												<button name="update" class="btn btn-success"><i class="icon-save icon-large"></i></button>
+												<button name="update" class="btn btn-success">Save Changes <i class="icon-save icon-large"></i></button>
 
                                           </div>
                                         </div>
