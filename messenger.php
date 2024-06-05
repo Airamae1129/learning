@@ -5,13 +5,12 @@
 <?php $messenger = new Messenger(); ?>
 <?php $userId = isset($_SESSION['id']) ? $_SESSION['id'] : 0; ?>
 <?php $type = isset($_SESSION['user_type']) ? $_SESSION['user_type']: ''; ?>
-<?php $sidebar = $type == 'teacher' 
-			   ? 'teacher_message_sidebar.php' 
-			   : 'student_message_sidebar.php'; 
-?>
+<?php $sidebar = $type == 'teacher' ? 'teacher_message_sidebar.php' : 'student_message_sidebar.php'; ?>
+<?php $navbar = $type == 'teacher' ? 'navbar_teacher.php' : 'navbar_student.php'; ?>
+
 
 <body>
-	<?php include('navbar_student.php'); ?>
+	<?php require_once $navbar; ?>
         <div class="container-fluid">
             <div class="row-fluid">
 			    <?php require_once $sidebar; ?>
