@@ -293,7 +293,6 @@
 						url: 'api/messenger.php' + queryString,
 						contentType: 'application/json',
 						success: function (response) {
-							document.getElementById('contact-name').innerHTML = name;
 							response = JSON.stringify(response);
 							response = JSON.parse(response);
 
